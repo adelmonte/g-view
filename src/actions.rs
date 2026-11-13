@@ -34,7 +34,7 @@ pub static ACTIONS: &[ActionDef] = &[
     a!("newwindow", "New Window", ["window-new"], Always),
     a!("open", "&Open...", ["document-open"], Always),
     a!("reloadfile", "Re&load File", ["view-refresh"], Disable),
-    a!("opencontainingfolder", "Open Containing &Folder", ["document-open"], Disable),
+    a!("opencontainingfolder", "Open Containing &Folder", ["folder-open", "document-open-folder", "folder"], Disable),
     a!("showfileinfo", "Show File &Info", ["document-properties"], Disable),
     a!("delete", "&Move to Trash", ["edit-delete"], Disable),
     a!("deletepermanent", "Delete Permanently", ["edit-delete"], Disable),
@@ -72,6 +72,13 @@ pub static ACTIONS: &[ActionDef] = &[
 
 pub fn def(key: &str) -> Option<&'static ActionDef> {
     ACTIONS.iter().find(|a| a.key == key)
+}
+
+/// A menu without the empty check/radio indicator column (none of our items are toggles)
+pub fn new_menu() -> gtk::Menu {
+    let menu = gtk::Menu::new();
+    menu.set_reserve_toggle_size(false);
+    menu
 }
 
 /// Resolve a themed icon, trying fallbacks and symbolic variants.
@@ -160,7 +167,7 @@ pub fn add_action(menu: &gtk::Menu, win: &Rc<MainWindow>, key: &'static str) -> 
 fn submenu_item(text: &str, icons: &[&str], add_icon: bool) -> (gtk::MenuItem, gtk::Menu) {
     let img = if add_icon { icon_image(icons) } else { gtk::Image::new() };
     let (item, _) = make_item(text, img, None);
-    let menu = gtk::Menu::new();
+    let menu = new_menu();
     item.set_submenu(Some(&menu));
     (item, menu)
 }
@@ -276,7 +283,7 @@ pub fn fill_open_with_menu(win: &Rc<MainWindow>, m: &gtk::Menu) {
 }
 
 pub fn build_context_menu(win: &Rc<MainWindow>) -> gtk::Menu {
-    let menu = gtk::Menu::new();
+    let menu = new_menu();
     add_action(&menu, win, "open");
     menu.append(&build_recents_menu(win));
     menu.append(&build_open_with_menu(win));
@@ -302,7 +309,7 @@ pub fn build_menu_bar(win: &Rc<MainWindow>, bar: &gtk::MenuBar) {
     }
     let top = |text: &str| -> (gtk::MenuItem, gtk::Menu) {
         let item = gtk::MenuItem::with_mnemonic(&mnemonic(text));
-        let menu = gtk::Menu::new();
+        let menu = new_menu();
         item.set_submenu(Some(&menu));
         (item, menu)
     };
