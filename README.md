@@ -5,7 +5,7 @@ Same behavior, same settings, same shortcuts, same translations.
 
 ## At a glance
 
-- Install: `./install.sh` (user) or `sudo PREFIX=/usr/local ./install.sh`
+- Install: `yay -S g-view` (AUR), or `./install.sh` (user) or `sudo PREFIX=/usr/local ./install.sh`
 - Run: `g-view [file-or-folder]`
 - Existing qView settings are imported automatically on first run.
 - Config: `~/.config/g-view/g-view.conf`
