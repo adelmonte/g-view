@@ -635,6 +635,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "g-view"
+version = "0.1.0"
+dependencies = [
+ "async-channel",
+ "cairo-rs",
+ "fast_image_resize",
+ "gdk",
+ "gdk-pixbuf",
+ "gio",
+ "glib",
+ "gtk",
+ "image",
+ "lcms2",
+ "pango",
+ "percent-encoding",
+ "quick-xml",
+ "rand 0.10.3",
+ "rayon",
+ "resvg",
+]
+
+[[package]]
 name = "gdk"
 version = "0.18.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -853,28 +875,6 @@ dependencies = [
  "libc",
  "pango-sys",
  "system-deps",
-]
-
-[[package]]
-name = "gtk-view"
-version = "0.1.0"
-dependencies = [
- "async-channel",
- "cairo-rs",
- "fast_image_resize",
- "gdk",
- "gdk-pixbuf",
- "gio",
- "glib",
- "gtk",
- "image",
- "lcms2",
- "pango",
- "percent-encoding",
- "quick-xml",
- "rand 0.10.3",
- "rayon",
- "resvg",
 ]
 
 [[package]]

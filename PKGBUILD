@@ -1,5 +1,5 @@
 # Maintainer: adelmonte
-pkgname=gtk-view
+pkgname=g-view
 pkgver=0.1.0
 pkgrel=2
 pkgdesc="Minimal image viewer (GTK3 port of qView)"
@@ -16,12 +16,12 @@ build() {
 
 package() {
   cd "$startdir"
-  install -Dm755 target/release/gtk-view "$pkgdir/usr/bin/gtk-view"
-  install -Dm644 dist/gtk-view.desktop "$pkgdir/usr/share/applications/gtk-view.desktop"
+  install -Dm755 target/release/g-view "$pkgdir/usr/bin/g-view"
+  install -Dm644 dist/g-view.desktop "$pkgdir/usr/share/applications/g-view.desktop"
   for d in dist/hicolor/*/apps; do
     size=$(basename "$(dirname "$d")")
     for f in "$d"/*; do
-      ext="${f##*.}"; case "$f" in *symbolic*) name=gtk-view-symbolic;; *) name=gtk-view;; esac
+      ext="${f##*.}"; case "$f" in *symbolic*) name=g-view-symbolic;; *) name=g-view;; esac
       install -Dm644 "$f" "$pkgdir/usr/share/icons/hicolor/$size/apps/$name.$ext"
     done
   done

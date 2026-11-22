@@ -147,7 +147,7 @@ mod tests {
     }
 }
 
-/// Timing trace, enabled with GTKVIEW_TRACE=1
+/// Timing trace, enabled with GVIEW_TRACE=1
 pub struct Trace(&'static str, std::time::Instant);
 impl Trace {
     pub fn new(name: &'static str) -> Trace {
@@ -156,7 +156,7 @@ impl Trace {
 }
 impl Drop for Trace {
     fn drop(&mut self) {
-        thread_local!(static ON: bool = std::env::var_os("GTKVIEW_TRACE").is_some());
+        thread_local!(static ON: bool = std::env::var_os("GVIEW_TRACE").is_some());
         if ON.with(|o| *o) {
             eprintln!("[trace] {} {:.1}ms", self.0, self.1.elapsed().as_secs_f64() * 1000.0);
         }

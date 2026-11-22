@@ -56,8 +56,8 @@ pub struct MainWindow {
 impl MainWindow {
     pub fn new() -> Rc<MainWindow> {
         let window = gtk::Window::new(gtk::WindowType::Toplevel);
-        window.set_title("gtk-view");
-        window.set_icon_name(Some("gtk-view"));
+        window.set_title("g-view");
+        window.set_icon_name(Some("g-view"));
         let vbox = gtk::Box::new(gtk::Orientation::Vertical, 0);
         let menubar = gtk::MenuBar::new();
         let fullscreen_label = gtk::Label::new(None);
@@ -654,7 +654,7 @@ impl MainWindow {
     pub fn update_window_title(&self) {
         let core = self.core.borrow();
         let d = &core.details;
-        let mut s = "gtk-view".to_string();
+        let mut s = "g-view".to_string();
         if d.is_file() {
             let idx = d.loaded_index_in_folder + 1;
             let count = d.folder_file_info_list.len();
@@ -671,7 +671,7 @@ impl MainWindow {
                             util::format_bytes(d.file_size())
                         );
                     }
-                    s += " - gtk-view";
+                    s += " - g-view";
                 }
                 _ => {}
             }

@@ -2,7 +2,7 @@
 //!
 //! qView keeps everything in a QSettings INI file. We keep the same groups and keys
 //! ([General], [options], [recents], [shortcuts]) in a GLib key file of our own at
-//! `$XDG_CONFIG_HOME/gtk-view/gtk-view.conf`. On first run an existing qView config is
+//! `$XDG_CONFIG_HOME/g-view/g-view.conf`. On first run an existing qView config is
 //! migrated into it (see `qtconf.rs`).
 
 use std::cell::RefCell;
@@ -229,11 +229,11 @@ pub fn parse_value(kind: Kind, s: &str) -> Value {
 // ---------------------------------------------------------------------------------------------
 
 pub fn config_dir() -> PathBuf {
-    glib::user_config_dir().join("gtk-view")
+    glib::user_config_dir().join("g-view")
 }
 
 pub fn config_path() -> PathBuf {
-    config_dir().join("gtk-view.conf")
+    config_dir().join("g-view.conf")
 }
 
 /// Read-modify-write access to the config file. Every write re-reads the file first so that

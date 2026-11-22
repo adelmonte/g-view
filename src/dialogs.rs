@@ -1198,7 +1198,7 @@ pub fn open_about_dialog(parent: Option<&gtk::Window>) {
     b.set_margin_end(30);
     b.set_margin_top(20);
     b.set_margin_bottom(20);
-    b.pack_start(&lato_label("gtk-view", 72, true), false, false, 0);
+    b.pack_start(&lato_label("g-view", 72, true), false, false, 0);
     b.pack_start(
         &lato_label(&glib::markup_escape_text(&tr("QVAboutDialog", "version %1").replace("%1", &format!("{:.1}", app::VERSION))), 18, false),
         false,

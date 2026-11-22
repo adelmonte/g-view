@@ -62,7 +62,7 @@ fn get_items_from_desktop_files(file_path: &str) -> Vec<OpenWithItem> {
         entries.sort_by_key(|e| e.file_name());
         for entry in entries {
             let fname = entry.file_name().to_string_lossy().to_string();
-            if fname == "qView.desktop" || fname == "com.interversehq.qView.desktop" || fname.starts_with("gtk-view") {
+            if fname == "qView.desktop" || fname == "com.interversehq.qView.desktop" || fname.starts_with("g-view") {
                 continue;
             }
             if !fname.ends_with(".desktop") || !seen.insert(fname.clone()) {

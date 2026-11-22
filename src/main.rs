@@ -1,4 +1,4 @@
-//! gtk-view: a Rust + GTK3 port of qView (https://github.com/jurplel/qView).
+//! g-view: a Rust + GTK3 port of qView (https://github.com/jurplel/qView).
 
 mod actions;
 mod app;
@@ -30,7 +30,7 @@ extern "C" {
 
 /// QVApplication::ensureFontLoaded for the bundled fonts
 fn register_fonts() {
-    let dir = glib::user_cache_dir().join("gtk-view").join("fonts");
+    let dir = glib::user_cache_dir().join("g-view").join("fonts");
     let _ = std::fs::create_dir_all(&dir);
     for (name, data) in FONTS {
         let p = dir.join(name);
@@ -47,7 +47,7 @@ fn register_fonts() {
 }
 
 fn print_help() {
-    println!("Usage: gtk-view [options] file\n");
+    println!("Usage: g-view [options] file\n");
     println!("Options:");
     println!("  -h, --help     Displays help on commandline options.");
     println!("  -v, --version  Displays version information.\n");
@@ -65,7 +65,7 @@ fn main() {
             return;
         }
         if !only_files && (a == "-v" || a == "--version") {
-            println!("gtk-view {}", settings::fmt_double(app::VERSION));
+            println!("g-view {}", settings::fmt_double(app::VERSION));
             return;
         }
         if !only_files && a == "--" {
@@ -81,16 +81,16 @@ fn main() {
         }
     }
 
-    glib::set_prgname(Some("gtk-view"));
-    glib::set_application_name("gtk-view");
+    glib::set_prgname(Some("g-view"));
+    glib::set_application_name("g-view");
     register_fonts();
     qtconf::migrate_if_needed();
 
     if gtk::init().is_err() {
-        eprintln!("gtk-view: cannot open display");
+        eprintln!("g-view: cannot open display");
         std::process::exit(1);
     }
-    gtk::Window::set_default_icon_name("gtk-view");
+    gtk::Window::set_default_icon_name("g-view");
 
     // SettingsManager constructor: load settings, then translation
     let lang = settings::SettingsManager::new().string(Setting::Language);

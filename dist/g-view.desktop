@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=gtk-view
+Name=g-view
 GenericName=Image Viewer
 Type=Application
-Exec=gtk-view %U
-Icon=gtk-view
+Exec=g-view %U
+Icon=g-view
 StartupNotify=true
-StartupWMClass=gtk-view
+StartupWMClass=g-view
 Comment=Minimal image viewer (GTK3 port of qView)
 Keywords=photos;pictures;jpeg;png;gif;webp;
 Categories=GTK;Graphics;Viewer;Photography;

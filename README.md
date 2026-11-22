@@ -1,4 +1,4 @@
-# gtk-view
+# g-view
 
 A Rust + GTK3 port of [qView](https://github.com/jurplel/qView) (7.0), the minimal image viewer.
 Same behavior, same settings, same shortcuts, same translations.
@@ -6,9 +6,9 @@ Same behavior, same settings, same shortcuts, same translations.
 ## At a glance
 
 - Install: `./install.sh` (user) or `sudo PREFIX=/usr/local ./install.sh`
-- Run: `gtk-view [file-or-folder]`
+- Run: `g-view [file-or-folder]`
 - Existing qView settings are imported automatically on first run.
-- Config: `~/.config/gtk-view/gtk-view.conf`
+- Config: `~/.config/g-view/g-view.conf`
 
 ## Building
 
@@ -20,7 +20,7 @@ cargo build --release
 
 ## Migrating from qView
 
-On first launch, if there's no gtk-view config yet, it looks for a qView config in:
+On first launch, if there's no g-view config yet, it looks for a qView config in:
 
 - `~/.config/qView/qView.conf`
 - `~/.var/app/com.interversehq.qView/config/qView/qView.conf` (Flatpak)
@@ -28,7 +28,7 @@ On first launch, if there's no gtk-view config yet, it looks for a qView config 
 
 and imports every option, custom shortcut, recent files, last folder, window geometry and
 the first-launch flag (so the welcome screen isn't shown again). qView's file is left untouched.
-To re-import, delete `~/.config/gtk-view/gtk-view.conf`.
+To re-import, delete `~/.config/g-view/g-view.conf`.
 
 ## Differences from qView
 
@@ -41,11 +41,11 @@ To re-import, delete `~/.config/gtk-view/gtk-view.conf`.
 - The "Full Screen" shortcut (F11) is restored; upstream lost it in a refactor.
 - Open-with launches commands with spaces in them correctly; undo-delete also removes the
   `.trashinfo` file; rotated GIFs stay rotated while playing (upstream bugs).
-- The app calls itself gtk-view everywhere (title bar, dialogs, translations).
+- The app calls itself g-view everywhere (title bar, dialogs, translations).
 - macOS/Windows-only options (hide titlebar, force dark mode, quit on last window) are kept
   in the config but hidden, exactly like qView on Linux.
 
-Set `GTKVIEW_TRACE=1` to print decode/scale/draw timings.
+Set `GVIEW_TRACE=1` to print decode/scale/draw timings.
 
 ## License
 

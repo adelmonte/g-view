@@ -182,11 +182,11 @@ pub fn load(lang_setting: &str) -> bool {
 /// Qt-style tr(context, source)
 pub fn tr(ctx: &str, src: &str) -> String {
     let s = tr_raw(ctx, src);
-    // Our app is gtk-view; keep "qView" only where it really means upstream qView releases.
+    // Our app is g-view; keep "qView" only where it really means upstream qView releases.
     if ctx == "UpdateChecker" {
         s
     } else {
-        s.replace("qView", "gtk-view")
+        s.replace("qView", "g-view")
     }
 }
 
